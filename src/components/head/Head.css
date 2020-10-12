@@ -1,0 +1,18 @@
+*{box-sizing: border-box;}
+.linkA{
+	line-height: 14px;
+	color:#8C8C8C;
+	font-size: 14px;
+}
+.linkA:hover {
+	text-decoration: none;
+	color: #ED5992;
+	border-bottom: 2px solid #ED5992;
+}
+.headDiv>div{
+	height: 22px; 
+}
+.mainHead{
+	position: relative;
+	z-index: 10;
+}

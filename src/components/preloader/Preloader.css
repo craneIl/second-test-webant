@@ -1,0 +1,36 @@
+.preloaderBack{
+	height: 100vh;
+	position: fixed;
+	/*top: 50px;*/
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 4;
+	background-color: white;
+}
+#preloaderDivCircle>div{ width: 10px;height: 10px; }
+.preloaderDiv{
+	width: 60px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	z-index: 5;
+}
+#preloaderDivCircle>div:first-child{
+	background-color: #31196D;
+	animation: movein 2.1s infinite ease-in;
+}
+
+#preloaderDivCircle>div:nth-child(2){
+	background-color: #ED5992;
+	animation: movein 2.1s infinite 0.7s ease-in;
+}
+#preloaderDivCircle>div:last-child{
+	background-color: #733CE2;
+	animation: movein 2.1s infinite 1.4s ease-in;
+}
+@keyframes movein{
+	50%{
+		transform: scale(1.5);
+	}
+}
