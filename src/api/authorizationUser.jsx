@@ -1,6 +1,6 @@
 import api from '.'
 
-export default async function authorizationUser(password, username) {
+export default async (password, username) => {
 	const response = await api.get('/oauth/v2/token', {
 		params: {
 			client_id: localStorage.getItem('randomId'),

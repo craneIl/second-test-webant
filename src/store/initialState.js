@@ -7,6 +7,6 @@ const initialState = {
 	refresh_token,
 }
 
-console.log('initialState:', initialState)
+// console.log('initialState:', initialState)
 
 export default initialState

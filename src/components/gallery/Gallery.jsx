@@ -20,7 +20,7 @@ class Gallery extends React.Component {
 			openedImage: null,
 			currentPage: 1,
 		}
-		this.showErrorMessage=this.showErrorMessage.bind(this);
+		this.showErrorMessage = this.showErrorMessage.bind(this)
 	}
 
 	componentDidMount() {
@@ -33,13 +33,14 @@ class Gallery extends React.Component {
 		})
 	}
 
-	showErrorMessage(){
+	showErrorMessage() {
 		return (
 			<div>
 				<img src="/img/error.jpg" />
 				<h3>Oh,Shucks</h3>
-				<p>Slow or no internet connection.
-				Please check your internet settings</p>
+				<p>
+					Slow or no internet connection. Please check your internet settings
+				</p>
 			</div>
 		)
 	}
@@ -49,9 +50,9 @@ class Gallery extends React.Component {
 
 		try {
 			const response = await requestGallery(
-					page, 
-					this.props.isNew, 
-					this.props.isPopular
+				page,
+				this.props.isNew,
+				this.props.isPopular
 			)
 
 			this.setState({
@@ -74,7 +75,7 @@ class Gallery extends React.Component {
 		let collectionElem = this.state.images
 		return collectionElem.map((OneElemRecord) => {
 			return (
-				<div className="col-3 my-1">
+				<div className="col-3 my-1" key={OneElemRecord.id}>
 					<div
 						className=" imgMenu "
 						onClick={() => {
@@ -85,6 +86,7 @@ class Gallery extends React.Component {
 							src={
 								'http://gallery.dev.webant.ru/media/' + OneElemRecord.image.name
 							}
+							alt="description"
 						/>
 					</div>
 				</div>
@@ -99,17 +101,17 @@ class Gallery extends React.Component {
 				<div className="mt-4">
 					<div className="row d-flex justify-content-around">
 						{this.getImages()}
-						{
-							this.state.error ? this.showErrorMessage() : ( 
-								<Pagination
-									className="my-3"
-									current={this.state.currentPage}
-									total={this.state.totalPageNum * 10}
-									showSizeChanger={false}
-									onChange={(page) => this.request(page)}
-								/>
-							)
-						}
+						{this.state.error ? (
+							this.showErrorMessage()
+						) : (
+							<Pagination
+								className="my-3"
+								current={this.state.currentPage}
+								total={this.state.totalPageNum * 10}
+								showSizeChanger={false}
+								onChange={(page) => this.request(page)}
+							/>
+						)}
 					</div>
 				</div>
 
@@ -124,4 +126,4 @@ class Gallery extends React.Component {
 	}
 }
 
-export default Gallery;
+export default Gallery

@@ -1,10 +1,10 @@
 *{box-sizing: border-box;}
-.linkA{
+.linkA, .linkB{
 	line-height: 14px;
 	color:#8C8C8C;
 	font-size: 14px;
 }
-.linkA:hover {
+.linkA:hover, .linkB:hover, .currentLink {
 	text-decoration: none;
 	color: #ED5992;
 	border-bottom: 2px solid #ED5992;
