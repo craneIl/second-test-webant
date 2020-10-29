@@ -99,18 +99,22 @@ class Gallery extends React.Component {
 			<div className="container">
 				{this.state.isLoading ? <Preloader /> : null}
 				<div className="mt-4">
-					<div className="row d-flex justify-content-around">
-						{this.getImages()}
-						{this.state.error ? (
-							this.showErrorMessage()
-						) : (
-							<Pagination
-								className="my-3"
-								current={this.state.currentPage}
-								total={this.state.totalPageNum * 10}
-								showSizeChanger={false}
-								onChange={(page) => this.request(page)}
-							/>
+					<div className="row d-flex-column justify-content-around" >
+						<div className="row d-flex justify-content-around">
+							{this.getImages()}
+						</div>
+						{this.state.error 
+						? this.showErrorMessage()
+						: (
+							<div>
+								<Pagination
+									className="my-3"
+									current={this.state.currentPage}
+									total={this.state.totalPageNum * 10}
+									showSizeChanger={false}
+									onChange={(page) => this.request(page)}
+								/>
+							</div>
 						)}
 					</div>
 				</div>
