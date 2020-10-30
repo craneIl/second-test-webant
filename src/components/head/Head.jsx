@@ -37,7 +37,7 @@ class Head extends React.Component {
 			<div className="mainHead">				
 				{this.activeLink(current_link)}
 				<div className="row mt-3">
-					<div className="col-2">
+					<div className="col-2 px-0">
 						<img src="/img/Object.png" alt="logo" />
 					</div>
 					<div className="col-10 pt-2">

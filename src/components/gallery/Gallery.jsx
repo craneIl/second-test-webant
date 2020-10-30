@@ -75,7 +75,7 @@ class Gallery extends React.Component {
 		let collectionElem = this.state.images
 		return collectionElem.map((OneElemRecord) => {
 			return (
-				<div className="col-3 my-1" key={OneElemRecord.id}>
+				<div className="col-3 my-3" key={OneElemRecord.id}>
 					<div
 						className=" imgMenu "
 						onClick={() => {
@@ -96,11 +96,11 @@ class Gallery extends React.Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div>
 				{this.state.isLoading ? <Preloader /> : null}
 				<div className="mt-4">
 					<div className="row d-flex-column justify-content-around" >
-						<div className="row d-flex justify-content-around">
+						<div className="row d-flex justify-content-start ">
 							{this.getImages()}
 						</div>
 						{this.state.error 
