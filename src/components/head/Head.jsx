@@ -7,49 +7,51 @@ import deleteAccessToken from '../../store/actionCreators/deleteAccessToken'
 class Head extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {			
-		}
-		this.activeLink = this.activeLink.bind(this);
+		this.state = {}
 	}
 
-	componentDidMount(){
-		const linkAfterReboot = this.props.location.pathname		
-		this.activeLink(linkAfterReboot)
-	}
+	getHeaderTabs(pathName) {
+		const links = [
+			{
+				to: '/',
+				title: 'New',
+				key : 'new',
+			},
+			{
+				to: '/popular',
+				title: 'Popular',
+				key : 'popular',
+			},
+		]
 
-	activeLink( link ) {
-		const nodeLink = document.querySelectorAll('.linkA');
-		const arrayLink = Array.from(nodeLink);
-
-		arrayLink.map( (oneLink) => {
-			(oneLink.href === 'http://localhost:3000'+link)
-			? oneLink.classList.add('currentLink')
-			: oneLink.classList.remove('currentLink');
+		return links.map((link) => {
+			return (
+				<Link
+					className={`col-1 linkA ${pathName === link.to ? 'currentLink' : ''}`}
+					to={link.to}
+					key={link.key}
+				>
+					{link.title}
+				</Link>
+			)
 		})
 	}
 
 	render() {
 		const access_token = this.props.myStore.access_token
 		const refresh_token = this.props.myStore.refresh_token
-		const current_link = this.props.location.pathname 
-		
+		const { pathname } = this.props.location
+
 		return (
-			<div className="mainHead">				
-				{this.activeLink(current_link)}
+			<div className="mainHead">
 				<div className="row mt-3">
 					<div className="col-2 px-0">
 						<img src="/img/Object.png" alt="logo" />
 					</div>
 					<div className="col-10 pt-2">
 						<div className="row border-bottom headDiv d-flex justify-content-between">
-							<div>
-								<Link className="col-1 linkA" to="/">
-									News
-								</Link>
-								<Link className="col-1 linkA" to="/popular">
-									Popular
-								</Link>
-							</div>
+							<div>{this.getHeaderTabs(pathname)}</div>
+
 							<div>
 								{access_token && refresh_token ? (
 									<div>

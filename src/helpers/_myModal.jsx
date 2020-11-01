@@ -15,6 +15,7 @@ export default class _myModal extends React.Component {
 			<div>
 				<Modal
 					visible={true}
+					footer={null}
 					onOk={() => this.props.closeModal()}
 					onCancel={() => this.props.closeModal()}
 				>

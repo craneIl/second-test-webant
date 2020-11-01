@@ -35,12 +35,15 @@ class Gallery extends React.Component {
 
 	showErrorMessage() {
 		return (
-			<div>
-				<img src="/img/error.jpg" />
-				<h3>Oh,Shucks</h3>
+			<div className="col-6 px-0 d-flex-column ">
+				<img 
+					src="/img/error.jpg" 
+					className="my-3 ml-4"	
+				/>				
+				<h3 className="" >Oh,Shucks</h3>
 				<p>
 					Slow or no internet connection. Please check your internet settings
-				</p>
+				</p>			
 			</div>
 		)
 	}
