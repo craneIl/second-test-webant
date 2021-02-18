@@ -63,7 +63,7 @@ class Gallery extends React.Component {
 				totalPageNum: response.countOfPages,
 				error: false,
 			})
-		} catch (e) {
+		} catch {
 			this.setState({
 				error: true,
 			})

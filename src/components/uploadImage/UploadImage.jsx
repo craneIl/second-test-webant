@@ -13,6 +13,7 @@ class UploadImage extends React.Component {
 			successfully: null,
 			isLoading: false,
 		}
+		this.myForm = React.createRef();
 	}
 
 	async onFileChange(e) {
@@ -26,7 +27,7 @@ class UploadImage extends React.Component {
 	async uploadImage() {
 		this.setState({ isLoading: true })
 
-		const form = document.getElementById('formSendImage')
+		const form = this.myForm.current ; 
 
 		if (!this.state.file) {
 			return
@@ -64,7 +65,7 @@ class UploadImage extends React.Component {
 				<div className="mt-4 container">
 					<h3>Selected Photo</h3>
 
-					<form id="formSendImage">
+					<form ref={ this.myForm } >
 						<input type="hidden" name="MAX_FILE_SIZE" value="64000" />
 
 						<div className="custom-file col-6">
