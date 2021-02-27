@@ -27,7 +27,7 @@ class Head extends React.Component {
 		return links.map((link) => {
 			return (
 				<Link
-					className={`col-1 linkA ${pathName === link.to ? 'currentLink' : ''}`}
+					className={`col-3 linkA ${pathName === link.to ? 'currentLink' : ''}`}
 					to={link.to}
 					key={link.key}
 				>
@@ -50,17 +50,17 @@ class Head extends React.Component {
 					</div>
 					<div className="col-10 pt-2">
 						<div className="row border-bottom headDiv d-flex justify-content-between">
-							<div>{this.getHeaderTabs(pathname)}</div>
+							<div className="col-6 d-flex p-0">{this.getHeaderTabs(pathname)}</div>
 
-							<div>
+							<div className="col-6 mh-100 p-0">
 								{access_token && refresh_token ? (
-									<div>
-										<Link className="linkA col-1" to="/uploadImage">
+									<div className="col-12 d-flex justify-content-end h-100 p-0">
+										<Link className="linkA col-4" to="/uploadImage">
 											Upload image
 										</Link>
 										<Link
 											to="/"
-											className=" col-1 linkB"
+											className=" col-3 linkB"
 											onClick={() => {
 												this.props.deleteAccess()
 											}}
@@ -69,11 +69,11 @@ class Head extends React.Component {
 										</Link>
 									</div>
 								) : (
-									<div>
-										<Link className="linkA col-1" to="/registration">
+									<div className="col-12 d-flex justify-content-end h-100 p-0">
+										<Link className="linkA col-4" to="/registration">
 											Registration
 										</Link>
-										<Link className="linkA col-1" to="/authorization">
+										<Link className="linkA col-4" to="/authorization">
 											Authorization
 										</Link>
 									</div>

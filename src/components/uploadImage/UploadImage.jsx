@@ -26,9 +26,8 @@ class UploadImage extends React.Component {
 
 	async uploadImage() {
 		this.setState({ isLoading: true })
-
 		const form = this.myForm.current ; 
-
+		
 		if (!this.state.file) {
 			return
 		}
@@ -37,7 +36,8 @@ class UploadImage extends React.Component {
 		const result = await requestUploadImage(
 			response,
 			form.new.checked,
-			form.popular.checked
+			form.popular.checked,
+			form.descriptions.value
 		)
 
 		this.setState({
@@ -79,6 +79,12 @@ class UploadImage extends React.Component {
 							<label className="custom-file-label" htmlFor="file">
 								Choose file
 							</label>
+						</div>
+
+						<div className="input-group mt-1 col-6 p-0">
+							<div className="input-group-append col-12 p-0">
+								<input type="text" name="descriptions" className="form-control" placeholder="descriptions file"/>		
+							</div>
 						</div>
 
 						<div className=" my-1 input-group">

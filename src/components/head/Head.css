@@ -3,6 +3,7 @@
 	line-height: 14px;
 	color:#8C8C8C;
 	font-size: 14px;
+	text-align: center;
 }
 .linkA:hover, .linkB:hover, .currentLink {
 	text-decoration: none;

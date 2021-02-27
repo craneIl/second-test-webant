@@ -1,10 +1,11 @@
 import api from '.';
 
-export default async (id, isNew, isPopular) => {
+export default async (id, isNew, isPopular, descriptions = 'default descriptions') => {
     try{
         await api.post('/api/photos', {
             new : isNew,
             popular : isPopular,
+            description : descriptions ,
             image: 'api/media_objects/' + id,
         }, {
             headers: {

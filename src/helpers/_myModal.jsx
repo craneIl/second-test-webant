@@ -5,9 +5,6 @@ import React from 'react'
 export default class _myModal extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			visible: true,
-		}
 	}
 
 	render() {
@@ -28,7 +25,7 @@ export default class _myModal extends React.Component {
 							className=" w-100 "
 							alt="images"
 						/>
-						<div className="card-body">Description</div>
+						<div className="card-body">{this.props.image.description}</div>
 					</div>
 				</Modal>
 			</div>

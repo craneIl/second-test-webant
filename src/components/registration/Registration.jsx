@@ -12,6 +12,15 @@ class Registration extends React.Component{
 		this.state = {
 			successfully : null			
 		}
+		this.myForm = React.createRef()
+		this.inputPass = React.createRef()
+		this.validation=this.validation.bind(this)
+	}
+
+	validation( password ){
+		const templatePassword = /[\p{L}\p{N}\p{P}]{5,}/iu;
+		return templatePassword.test(password);
+
 	}
 
 	render(){
@@ -45,6 +54,7 @@ class Registration extends React.Component{
 				
 				<Form
 					{...layout}
+					ref = { this.myForm }
 					id="basic"
 					name="basic"
 					initialValues={{
@@ -55,6 +65,19 @@ class Registration extends React.Component{
 							...e,
 							'date-picker': e['date-picker'].format('YYYY-MM-DD'),
 						};
+						
+						if( !this.validation( values.password ) ){
+							
+							this.myForm.current.setFieldsValue({
+								password : '',
+							})
+
+							this.inputPass.current.focus({
+								cursor : 'start',
+							})
+
+							return
+						}
 						let answerRegUser = await registrationUser(
 							values.email,
 							values.number,
@@ -96,12 +119,9 @@ class Registration extends React.Component{
 						label={
 							<span className=" w-100 ">
 								Password&nbsp;
-								<Tooltip className=" w-25 " title="Minimum of 5 characters">
-						  			<QuestionCircleOutlined />
-								</Tooltip>
-								&nbsp;
 							</span>
 						}
+						help = {'should be minimum 5 characters'}
 						name="password"
 						rules={[
 							{
@@ -110,21 +130,21 @@ class Registration extends React.Component{
 							},
 						]}
 					>
-						<Input.Password />
+						<Input.Password  ref = { this.inputPass } />
 					</Form.Item>
 
 					<Form.Item
 						label={ 
 							<span className="w-100">
 								Email&nbsp;
-								<Tooltip className="w-25" title="Minimum of 5 characters">
-						  			<QuestionCircleOutlined />
-								</Tooltip>
-								&nbsp;
 							</span>
 						}
 						name="email"
 						rules={[
+							{
+								type: 'email',
+								message: 'The input is not valid E-mail!',
+							},
 							{
 								required: true,
 								message: 'Please input your email!',
@@ -162,7 +182,10 @@ class Registration extends React.Component{
       				</Form.Item>
 
 					<Form.Item {...tailLayout}>
-						<Button type="primary" htmlType="submit" >
+						<Button 
+							type="primary" 
+							htmlType="submit" 
+						>
 							Send
 						</Button>
 					</Form.Item>

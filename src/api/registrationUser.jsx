@@ -2,7 +2,7 @@ import api from '.'
 
 export default async (email,phone,fullname,password,username,birthday) => {
     try{    
-        await api.post('/api/users', {
+        const test = await api.post('/api/users', {
                 email: email,
                 phone: phone,
                 fullName: fullname,
@@ -12,6 +12,7 @@ export default async (email,phone,fullname,password,username,birthday) => {
                 roles : ['user'],
             }
         )
+        console.log('test', test );
         return true;
     } catch{
         return false;
